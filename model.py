@@ -67,10 +67,10 @@ class Cnn_Regression(object):
         blx_sqr = keras.layers.Lambda(self.slice1, arguments={'k':int(0)}, output_shape=(eight_of_input,eight_of_input,self.njoints))(b2b_sqr)
         bly_sqr = keras.layers.Lambda(self.slice1, arguments={'k':int(self.njoints)}, output_shape=(eight_of_input,eight_of_input,self.njoints))(b2b_sqr)
         blz_sqr = keras.layers.Lambda(self.slice1, arguments={'k':int(self.njoints*2)}, output_shape=(eight_of_input,eight_of_input,self.njoints))(b2b_sqr)
-        print(b2b_sqr)
-        print(blx_sqr)
-        print(bly_sqr)
-        print(blz_sqr)
+        #print(b2b_sqr)
+        #print(blx_sqr)
+        #print(bly_sqr)
+        #print(blz_sqr)
         
         bl_sqr = keras.layers.Add()([blx_sqr, bly_sqr, blz_sqr])
         
@@ -86,10 +86,10 @@ class Cnn_Regression(object):
         locmap_y = keras.layers.Lambda(self.slice1, arguments={'k':int(self.njoints*2)}, output_shape=(eight_of_input,eight_of_input,self.njoints),name="locmapy")(c2)
         locmap_z = keras.layers.Lambda(self.slice1, arguments={'k':int(self.njoints*3)}, output_shape=(eight_of_input,eight_of_input,self.njoints),name="locmapz")(c2)
         
-        print(heat_map)
-        print(locmap_x)
-        print(locmap_y)
-        print(locmap_z)
+        #print(heat_map)
+        #print(locmap_x)
+        #print(locmap_y)
+        #print(locmap_z)
 
         self.model = Model(inputs=prev_model.input, outputs=[heat_map, locmap_x, locmap_y, locmap_z])
         #return model
